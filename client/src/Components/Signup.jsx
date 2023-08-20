@@ -17,7 +17,7 @@ const Signup = () => {
         if(value.username===" " || value.email===" " || value.password===" " || value.username==="" || value.email==="" || value.password==="" || value.username===undefined || value.email===undefined || value.password===undefined ){
             toast("Add all the fields properly")
         }
-        await axios.post("http://localhost:5000/auth/register", value)
+        await axios.post("/auth/register", value)
         .then((res) => {
             toast("New User Created Sucessfully")
             setValues({

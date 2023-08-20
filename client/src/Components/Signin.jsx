@@ -17,14 +17,15 @@ const Signin = (props) => {
         if(value.email===" " || value.password===" " || value.email==="" || value.password==="" || value.email===undefined || value.password===undefined ){
             toast("Add all the fields properly")
         }
-        await axios.post("http://localhost:5000/auth/login", value)
+        await axios.post("/auth/login", value)
         .then((res) => {
             toast("Logged in Successfully")
             setValues({
                 email: "",
                 password:"",
             }); // Clear the form
-            localStorage.setItem("user",res.data)
+            localStorage.setItem("user",res?.data?.token)
+            localStorage.setItem("id",res?.data?.id)
             props.setUser(true)
             navigate("/allblogs")
         })

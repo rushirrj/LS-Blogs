@@ -27,7 +27,7 @@ const CreateBlog = ({reload,setReload}) => {
       return;
     }
     await axios
-      .post("http://localhost:5000/blogs", blog, {
+      .post("/blogs", blog, {
         headers: {
           Authorization:localStorage.getItem("user"),
         },
