@@ -15,6 +15,7 @@ const register = (req, res) => {
     const q = "INSERT INTO blog.users(`username`,`email`,`password`) VALUES(?)";
     const values = [req.body.username, req.body.email, hash];
     db.query(q, [values], (err, data) => {
+      console.log(data)
       if (err) return res.status(500).json(`error:${err}`);
       return res.status(200).json("user has been created");
     });
@@ -26,6 +27,7 @@ const login = (req, res) => {
     // Check if user exists
     const q = `select * from blog.users where email= ?`;
     db.query(q, [req.body.email], (err, data) => {
+      console.log(data)
       if (err) return res.status(500).json(`error:${err}`);
       if (data.length === 0) return res.status(400).json("User not found");
 
@@ -39,7 +41,7 @@ const login = (req, res) => {
 
       const { password, ...other } = data[0];
       const token = jwt.sign({ id: data[0].id }, "jwtkey");
-      res.json(token)
+      return res.json({token,id:data[0].id})
     });
   } catch (error) {
     console.log(error);

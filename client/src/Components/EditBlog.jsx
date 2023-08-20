@@ -21,7 +21,7 @@ const EditBlog = () => {
     useEffect(()=>{
         const loadData = async () => {
             try {
-            const res = await axios.get(`http://localhost:5000/blogs/${id}`)
+            const res = await axios.get(`/blogs/${id}`)
             // const value = res.json();
             setData(res.data)
             setBlog({...blog,title:data.title,body:data.body,img:data.img,desc:data.desc})

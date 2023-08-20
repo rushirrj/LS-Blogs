@@ -9,7 +9,7 @@ const BlogCard = (props) => {
 
   const deleteBlog=async ({reload,setReload})=>{
     await axios
-    .delete(`http://localhost:5000/blogs/${props.id}`, {
+    .delete(`/blogs/${props.id}`, {
       headers: {
         Authorization: `${localStorage.getItem("user")}`,
       },

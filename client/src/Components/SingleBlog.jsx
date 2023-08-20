@@ -13,7 +13,7 @@ const SingleBlog = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/blogs/${id}`)
+        const res = await axios.get(`/blogs/${id}`)
         // const value = res.json();
         setData(res.data)
       } catch (error) {

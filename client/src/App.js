@@ -32,7 +32,7 @@ const App = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const loadData = async () => {
-      const res = await axios.get("http://localhost:5000/blogs");
+      const res = await axios.get("/blogs");
       setData(res.data);
     };
 
